@@ -1,0 +1,9 @@
+{
+	"name": "Jukebox",
+	"slug": "jukebox",
+	"namespace": "Jukebox",
+	"version": "2.0",
+	"author": "Redrock Team @2016",
+	"license": "MIT",
+	"description": "重邮点歌台，和校园广播站合作。提供给广大师生一个点播歌曲和倾述心声的地方"
+}

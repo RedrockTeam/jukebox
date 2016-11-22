@@ -1,0 +1,1 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><title>songback</title><link href="{{ URL::asset('jukebox/css/app.cfe46aea94dafbe93d31f828034e4249.css') }}" rel=stylesheet></head><body><div id=app><router-view></router-view></div><script src="{{ URL::asset('jukebox/js/manager/app.4665379b3e53e3283e12.js') }}"></script></body></html>
