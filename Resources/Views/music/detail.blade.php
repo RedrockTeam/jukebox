@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="{{URL::asset('jukebox/css/detail_song.css')}}">
 </head>
 <body>
-	<audio id="audio" style="width:350px;" controls="controls" autoplay="autoplay" src="{{ $describe['song_reference'] }}" type="audio/mpeg"></audio>
+	<audio id="audio" style="width:350px;" controls="controls" autoplay="autoplay" src="/jukebox{{ $describe['song_reference'] }}" type="audio/mpeg"></audio>
 	<header>
 		<section class='user-outer'>
 			<div class="user-inf">
