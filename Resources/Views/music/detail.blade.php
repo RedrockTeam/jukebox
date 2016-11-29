@@ -10,10 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="{{URL::asset('jukebox/css/detail_song.css')}}">
 </head>
 <body>
-	{{-- <audio controls="controls">
-		<source src="{{ $describe['song_reference'] }}" type="audio/mpeg">
-	</audio> --}}
-	<audio id="audio" style="width:350px;" controls="controls" autoplay="autoplay" src="http://so1.111ttt.com:8282/2016/1/11/04/204041238433.mp3?tflag=1478238608&amp;pin=04aeba6eb0752ec4925d617d6e68e667&amp;ip=202.202.43.42#.mp3" type="audio/mpeg"></audio>
+	<audio id="audio" style="width:350px;" controls="controls" autoplay="autoplay" src="{{ $describe['song_reference'] }}" type="audio/mpeg"></audio>
 	<header>
 		<section class='user-outer'>
 			<div class="user-inf">
