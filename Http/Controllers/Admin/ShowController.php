@@ -106,7 +106,7 @@ class ShowController extends Controller
         if (empty($song->getAttributes()))
             return response()->json(['Message' => '没有找到对应曲库的歌曲'], 404);
 
-        if (!is_null($song->getAttributeValue('song_reference')))
+        if (!empty($song->getAttributeValue('song_reference')))
             return response()->json(['Message' => '该歌曲已经通过审核'], 403);
 
         $file = $request->file('mis');
