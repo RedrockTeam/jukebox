@@ -24,6 +24,7 @@ class CreateSongSheetsTable extends Migration
 
             /* reference user info */
             $table->string('name', 40);
+            $table->string('avatar', 100);
             $table->integer('user_id')->unsigned();
             /* }} */
 
