@@ -26,7 +26,7 @@ class Authenticate
             $user = WeixinUser::getFullyUserInfoWithOpenID($weixin['openid']);
 
             if (empty($user)) {
-                $user = WeixinUser::storeNewUserInfo((new WeixinUser), $weixin->toArray());
+                $user = WeixinUser::storeNewUserInfo((new WeixinUser), $weixin);
             }
 
             // 存储当前会话消息

@@ -82,19 +82,19 @@ class WeixinUser extends Model
     /**
      * 存储新用户的个人信息
      *
-     * @param Weixin_User $user
+     * @param WeixinUser $user
      * @param array       $weixin
-     * @return Weixin_User
+     * @return WeixinUser
      */
-    public static function storeNewUserInfo(Weixin_User $user, array $weixin) {
+    public static function storeNewUserInfo(WeixinUser $user, array $weixin) {
 
         /*
          * openid, avatar, nickname
          *
          */
-        $user->user_openid = $weixin['id'];
-        $user->user_nickname = $weixin['name'];
-        $user->user_avatar = $weixin['avatar'];
+        $user->user_openid = $weixin['openid'];
+        $user->user_nickname = $weixin['nickname'];
+        $user->user_avatar = $weixin['headimgurl'];
 
         $status = $user->save();
 

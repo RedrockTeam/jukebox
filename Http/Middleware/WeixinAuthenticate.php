@@ -86,7 +86,7 @@ class WeixinAuthenticate
 
             $oauth2 = $this->baseOAUTH . '?' . $this->build_query([
                     'appid' => $config['appid'],
-                    'redirect_uri' => $request->fullUrl(),
+                    'redirect_uri' => /*$request->fullUrl()*/'http://hongyan.cqupt.edu.cn/' . $request->path(),
                     'response_type' => 'code',
                     'scope' => $this->scope,
                     'state' => $this->state
@@ -145,7 +145,7 @@ class WeixinAuthenticate
     {
         $queries = array_except($request->query(), ['code', 'state']);
 
-        return $request->url().(empty($queries) ? '' : '?' . $this->build_query($queries));
+        return /*$request->url()*/'http://hongyan.cqupt.edu.cn/' . $request->path() . (empty($queries) ? '' : '?' . $this->build_query($queries));
     }
 
     private function build_query(array $data)
