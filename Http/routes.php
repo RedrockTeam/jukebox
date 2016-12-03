@@ -40,4 +40,7 @@ Route::group(['prefix' => 'jukebox/admin'], function () {
     // 公告管理
     Route::get('/represent/history', ['uses' => 'Admin\HelpController@representHistory']);
     Route::post('/represent/ruler', ['uses' => 'Admin\HelpController@representRuler']);
+    // 违规字提醒
+    Route::get('/slang/list', 'Admin\HelpController@slangList');
+    Route::post('/slang/add', 'Admin\HelpController@slangAdd');
 });

@@ -3,6 +3,7 @@
 namespace App\Modules\Jukebox\Http\Controllers\Admin;
 
 use App\Http\Requests;
+use App\Modules\Jukebox\Models\BadWord;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,7 @@ class HelpController extends Controller
 	 */
     public function representHistory()
     {
-    	return response()->json(Represent::getBoardList(), 200, ['Access-Control-Allow-Origin' => '*']); 
+    	return response()->json(Represent::getBoardList(), 200);
     }
 
     /**
@@ -26,7 +27,6 @@ class HelpController extends Controller
      */
     public function representRuler(Request $request)
     {
-    	header('Access-Control-Allow-Origin: *');
     	$announcement = $request->only(['title', 'content']);
 
     	if (empty($announcement) || empty($announcement['title']) || empty($announcement['content']))
@@ -34,5 +34,20 @@ class HelpController extends Controller
 
     	if (Represent::setAnnouncement($announcement['title'], $announcement['content']) < 0)
     		return response()->json(['Message' => '公告发布失败'], 500);
+    }
+
+    /**
+     * 显示所有违规字
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function slangList()
+    {
+        return response()->json(BadWord::getWords(), 200);
+    }
+
+    /***/
+    public function slangAdd(Request $request)
+    {
+        dump($request->all());
     }
 }

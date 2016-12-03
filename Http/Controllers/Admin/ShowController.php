@@ -24,7 +24,6 @@ class ShowController extends Controller
      */
     public function programUpload(Request $request)
     {
-        header('Access-Control-Allow-Origin: *');
         $num = $request->query('num') ?: 0;
         $metaJSON = [];
         $program = json_decode($request->input('program'), true);
@@ -77,7 +76,7 @@ class ShowController extends Controller
             'perPage' => 10,
             'list' => Album::getRecentlyPlayedAlbumSheets()
             // 跨域请求
-        ], 200, ['Access-Control-Allow-Origin' => '*']);
+        ], 200);
     }
 
     /**
@@ -88,7 +87,6 @@ class ShowController extends Controller
      */
     public function songUpload(Request $request)
     {
-        header('Access-Control-Allow-Origin: *');
         /**
          * 歌曲上传时附带的点歌信息
          *
@@ -140,7 +138,6 @@ class ShowController extends Controller
      */
     public function songList(Request $request)
     {
-        header('Access-Control-Allow-Origin: *');
         // 用于排序的条件数组
         $conditions = [];
 

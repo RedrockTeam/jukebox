@@ -10,9 +10,9 @@
 </head>
 <body>
 <header>
-    <img class='header-img' src="{{ $describe['album_cover'] }}">
+    <img class='header-img' src="http://enroll.lot.cat{{ $describe['album_cover'] }}">
     <div class="litte-img-wapper">
-        <img class='litte-img' src="{{ $describe['album_cover'] }}">
+        <img class='litte-img' src="http://enroll.lot.cat{{ $describe['album_cover'] }}">
     </div>
     <p class='song-title'>
         {{ $describe['album_name'] }}
