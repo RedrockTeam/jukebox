@@ -31,6 +31,7 @@ Route::group(['prefix' => 'jukebox', 'middleware' => ['weixin.auth', 'jukebox.au
 Route::group(['prefix' => 'jukebox/admin'], function () {
     // 需要显示的页面
     Route::get('/', function () { return view('jukebox::manager.index'); });
+    Route::post('/login', 'Admin\AuthController@login');
     // 歌曲管理
     Route::get('/song/list', ['uses' => 'Admin\ShowController@songList']);
     Route::post('/song/upload', ['uses' => 'Admin\ShowController@songUpload']);
