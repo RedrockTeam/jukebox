@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\AuthController as Controller;
 
+use Illuminate\Contracts\Validation\Factory;
 use App\Exceptions\Method\MethodNotFoundException;
 
 class AuthController extends Controller
@@ -50,15 +51,11 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        try {
-            ob_start();
-            $this->validateLogin($request);
-        } catch (ValidationException $e) {
-            ob_end_flush();
-            echo response()->json(['status' => '请求参数不完整，无法登录'], 403);
-        }
+        $validator = app(Factory::class)->getValidationFactory()->make(
+            $request->all, [$this->loginUsername() => 'required', 'password' => 'required'], [], []
+        );
 
-        ob_flush();
+        if ($validator->fails()) return response()->json(['status' => '登录信息不完整，无法登录'], 422);
 
         $throttles = $this->isUsingThrottlesLoginsTrait();
 
