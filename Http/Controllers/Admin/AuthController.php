@@ -51,7 +51,7 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $validator = app(Factory::class)->getValidationFactory()->make(
+        $validator = app(Factory::class)->make(
             $request->all, [$this->loginUsername() => 'required', 'password' => 'required'], [], []
         );
 
