@@ -50,7 +50,11 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $this->validateLogin($request);
+        try {
+            $this->validateLogin($request);
+        } catch (ValidationException $e) {
+            return response()->json(['status' => '请求参数不完整，无法登录'], 403);
+        }
 
         $throttles = $this->isUsingThrottlesLoginsTrait();
 
