@@ -52,7 +52,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validator = app(Factory::class)->make(
-            $request->all, [$this->loginUsername() => 'required', 'password' => 'required'], [], []
+            $request->all(), [$this->loginUsername() => 'required', 'password' => 'required'], [], []
         );
 
         if ($validator->fails()) return response()->json(['status' => '登录信息不完整，无法登录'], 422);
