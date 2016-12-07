@@ -73,14 +73,14 @@ class AuthController extends Controller
         $user = $request->input($this->username);
         $credentials = $this->getCredentials($request);
 
-        if (empty($password = env('USER_' . strtoupper($user), '')) || $credentials != $password) {
+        if (empty($password = env('USER_' . strtoupper($user), '')) || $credentials['password'] != $password) {
             if ($throttles && !$isLocked) $this->incrementLoginAttempts($request);
             return response()->json(['status' => '登录失败, 用户名或密码错误', 403]);
         }
 
         if ($throttles) $this->clearLoginAttempts($request);
 
-        $request->session()->set('user_' . strtolower($user), password_hash(substr($credentials, 5), PASSWORD_BCRYPT));
+        $request->session()->set('user_' . strtolower($user), password_hash(substr($credentials['password'], 5), PASSWORD_BCRYPT));
         $request->session()->migrate(true);
 
         return response()->json(['status' => '登录成功'], 200);
